@@ -205,7 +205,7 @@ $quiz.on('init',()=>{
 	
 ```
 
-* In the **Template** tab, we attach a function to our buttons/images with  the `ng-click` tag.
+* In the **Template** tab, we attach a function to our buttons/images with  the `ng-click` attribute.
 
 ```js
 	
