@@ -216,8 +216,8 @@ $quiz.on('init',()=>{
         <br>
         <span ng-repeat="t in ::themes"> //shows a button for each theme in the $scope.themes array
             <button class="theme-button" ng-click="selectLTheme(t)"> //On click, set the player's theme
-	/*Shows a picture belonging to the theme if found.
-	More info on the $index variable here :	https://docs.angularjs.org/api/ng/directive/ngRepeat */
+	<!-- Shows a picture belonging to the theme if found.
+	More info on the $index variable here :	https://docs.angularjs.org/api/ng/directive/ngRepeat -->
                 <img ng-if="pics[$index]" height="150" width="150" quiz-src="@sq_{{::pics[$index]}}.png" title="{{::t}}" />
                 <span ng-if="!pics[$index]">{{::s}}</span>
             </button>
