@@ -1,0 +1,13 @@
+
+<div class="my-poll" ng-if="poll">
+    <h3>{{::poll.title}}</h3>
+    <div ng-repeat="p in ::poll">
+        <a ng-if="!poll.voted" ng-click="poll.vote($index)">{{::p.id}}</a>
+        <span class="my-poll-bar" ng-if="poll.voted" 
+                ng-style="{width:(p.votes/poll.max)*100+'%',backgroundColor:p.color}">
+            {{::p.id}} 
+            <i ng-if="::poll.unit=='count'">&times;{{p.votes}}</i>
+            <i ng-if="::poll.unit=='percent'">{{(p.votes/poll.votes)*100 | number:0}}%</i>
+        </span>
+    </div>
+</div>

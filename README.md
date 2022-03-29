@@ -154,7 +154,7 @@ Template example:
         <h3 class="h3_l">Select the company you know most about (2X points, no PUs, no hints)</h3>
         <br>
         <span ng-repeat="t in ::themes">
-            <button class="theme-button" ng-click="selectLTheme(t)" ng-mouseover="current_desc(t)">
+            <button class="theme-button" ng-click="selectTheme(t)" ng-mouseover="current_desc(t)">
                 <img ng-if="pics[$index]" height="150" width="150" quiz-src="@sq_{{::pics[$index]}}.png" title="{{::t}}" />
                 <span ng-if="!pics[$index]">{{::s}}</span>
             </button>
@@ -194,14 +194,14 @@ $scope.pics = [
 	
 /* Function launched when the quiz starts, and when a player F5s/joins it. */
 $quiz.on('init',()=>{
-        $scope.l_theme = $player.get('LthemeSaki'); //Scope variable made for practical purposes, see template
+        $scope.l_theme = $player.get('ThemeSaki'); //Scope variable made for practical purposes, see template
     });
     
-    /* Here, "theme" is the name of a variable belonging to the function "selectLTheme".
+    /* Here, "theme" is the name of a variable belonging to the function "selectTheme".
     In order to be called from the template, the function needs to belong to the $scope. */
-    $scope.selectLTheme = theme=>{
+    $scope.selectTheme = theme=>{
         $scope.l_theme = theme; 
-        $player.set('LthemeSaki',theme); //Where we actually set the variable used by the Quiz
+        $player.set('ThemeSaki',theme); //Where we actually set the variable used by the Quiz
     };	
 	
 ```
@@ -215,7 +215,7 @@ $quiz.on('init',()=>{
         <h3 class="h3_l">Select the company you know most about (2X points, no PUs, no hints)</h3>
         <br>
         <span ng-repeat="t in ::themes"> //shows a button for each theme in the $scope.themes array
-            <button class="theme-button" ng-click="selectLTheme(t)"> //On click, set the player's theme
+            <button class="theme-button" ng-click="selectTheme(t)"> //On click, set the player's theme
 	<!-- Shows a picture belonging to the theme if found.
 	More info on the $index variable here :	https://docs.angularjs.org/api/ng/directive/ngRepeat -->
                 <img ng-if="pics[$index]" height="150" width="150" quiz-src="@sq_{{::pics[$index]}}.png" title="{{::t}}" />
