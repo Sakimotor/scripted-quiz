@@ -79,8 +79,8 @@ function quiz($quiz, $player, $scope, $room, $chat, $me, $timeout){
  ```html
 //Creates the div to show in the middle of the screen
 <div class="my-super-quiz" >
-     /* Angular writing which shows the category picked by the player if already chosen, 
-     and shows a select prompt otherwise*/
+     <!-- Angular writing which shows the category picked by the player if already chosen, 
+     and shows a select prompt otherwise -->
     <b ng-if="myCat">YOUR CATEGORY: {{myCat}}</b>
     <div ng-if="!myCat">
         <span ng-repeat="c in ::categories">
