@@ -124,15 +124,14 @@ function quiz($quiz, $player, $scope, $room, $chat, $me, $timeout){
 
 If you want to display some images in your script, you will have to use that tab.
 
-* First, you need to upload the files that you want to use in that tab
+* First, you need to upload the files that you want to use in that tab, and give them a short name
 
-![image](https://user-images.githubusercontent.com/20578016/159142280-3bf7a6df-3747-4e16-9d33-f2cc7804d808.png)
+![image](https://user-images.githubusercontent.com/20578016/160708023-2b3b3990-9235-4132-8175-9d79a20aea38.png)
 
-* Then, you need to get the id of each file, contained within the URL. Let's say that the URL of your file is ht<span>tps://qs546d879411qs3.cloudfront.net/myquiz/sq_**4894512058_1324654654824687410235f_sample**.png . The id needed to display the image would be the highlighted part.
 
-* Finally, you need to use that id in your template, as in :
+* Then, you add that short name in your template, as in :
 ```js
-<img  height="150" width="150" quiz-src="@sq_4894512058_1324654654824687410235f_sample.png" title="{{::t}}" />
+<img  height="150" width="150" quiz-src="@sega"/>
 ```
 
 * Alternatively, you can declare the image IDs in your Script, then pass it to the template :
@@ -141,11 +140,10 @@ Script example :
 ```js
 //We write the first set of numbers and the filename, for better code readibility
 var p = $scope.pics = [
-        '4894512058_sample', 
-        '1324870441_sample2'
+        '@sega', 
+        '@namco'
     ];
-    //We replace the underscore by the second set of numbers, which will be common to all the files of this quiz
-    for(var i=0;i<p.length;i++) p[i]=p[i].replace('_','_1324654654824687410235f_');
+    
 ```
 Template example:
 ```js
@@ -155,7 +153,7 @@ Template example:
         <br>
         <span ng-repeat="t in ::themes">
             <button class="theme-button" ng-click="selectTheme(t)" ng-mouseover="current_desc(t)">
-                <img ng-if="pics[$index]" height="150" width="150" quiz-src="@sq_{{::pics[$index]}}.png" title="{{::t}}" />
+                <img ng-if="pics[$index]" height="150" width="150" quiz-src="{{::pics[$index]}}" title="{{::t}}" />
                 <span ng-if="!pics[$index]">{{::s}}</span>
             </button>
         </span>
@@ -179,17 +177,18 @@ Creating a new variable is a very straightfoward process that can be done thanks
 * In the **Script** tab, create a function that takes a parameter, which will be used to initialize a new variable.
 		
 ```js
-	
+
+//Variables used in template
 $scope.themes = ['sega', 'konami', 'capcom', 'square', 'namco', 'taito'];
 $scope.difficulties = ['Medium', 'Medium-Hard', 'Hard', 'Very Hard'];
 	
 $scope.pics = [
-        '1640213313_sega',
-        '1640213354_konmai',
-        '1640213387_capcom',
-        '1640213473_square',
-        '1640213530_namco',
-        '1640214216_taito'
+        '@sega',
+        '@konmai',
+        '@capcom',
+        '@square',
+        '@namco',
+        '@taito'
     ];
 	
 /* Function launched when the quiz starts, and when a player F5s/joins it. */
@@ -218,7 +217,7 @@ $quiz.on('init',()=>{
             <button class="theme-button" ng-click="selectTheme(t)"> //On click, set the player's theme
 	<!-- Shows a picture belonging to the theme if found.
 	More info on the $index variable here :	https://docs.angularjs.org/api/ng/directive/ngRepeat -->
-                <img ng-if="pics[$index]" height="150" width="150" quiz-src="@sq_{{::pics[$index]}}.png" title="{{::t}}" />
+                <img ng-if="pics[$index]" height="150" width="150" quiz-src="{{::pics[$index]}}" title="{{::t}}" />
                 <span ng-if="!pics[$index]">{{::s}}</span>
             </button>
         </span>
