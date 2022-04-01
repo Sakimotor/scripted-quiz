@@ -1,0 +1,40 @@
+/* Little Trolling */
+#room chat {
+    font-family: "Comic Sans MS" !important;
+}
+
+/* Karaoke styling by black_alba */
+line.chat-dialog {
+    padding:5px;
+    margin-left:4%;
+    border-radius:10px;
+    background:rgba(0,0,0,0);
+    color:white;
+    font-weight:bold;
+    font-size:250%;
+    overflow: hidden;
+    transition:max-height .5s linear;
+}
+line.chat-dialog div {
+    white-space:pre-line;
+    text-align:center;
+}
+
+line.chat-translate {
+    padding:5px;
+    margin-left:4%;
+    border-radius:10px;
+    background:rgba(0,0,0,0);
+    color:#FFAD14;
+    font-weight:bold;
+    font-size:250%;
+    overflow: hidden;
+    transition:max-height .5s linear;
+}
+line.chat-translate div {
+    white-space:pre-line;
+    text-align:center;
+
+}
+
+/* End of Karaoke styling */
